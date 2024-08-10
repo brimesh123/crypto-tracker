@@ -8,7 +8,7 @@ export const fetchCoins = async () => {
             params: {
                 vs_currency: 'usd',
                 order: 'market_cap_desc',
-                per_page: 150,  // Increase this number to fetch more coins
+                per_page: 150,  
                 page: 1,
                 sparkline: false
             }
