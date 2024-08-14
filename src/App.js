@@ -41,7 +41,7 @@ function App() {
             <header className="App-header">
                 <h1>Crypto Currency Tracker</h1>
                 <SearchBar onChange={handleSearchChange} />
-                <div class="c_filter">
+                <div className="c_filter">
                     <label>Select Currency: </label>
                     <select value={currency} onChange={handleCurrencyChange}>
                         <option value="usd">USD</option>
