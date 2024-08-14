@@ -15,6 +15,36 @@
   padding: 0;
 }
 
+.c_filter {
+  text-align: center;
+  padding: 15px;
+  color: white;
+  font-family: math;
+}
+
+
+select {
+  border-radius: 7px !important;
+  padding: 8px 10px !important;
+}
+
+select:hover {
+  color: black !important;
+  background-color: white !important;
+ 
+  
+}
+
+option {
+  background: white;
+  color: black;
+}
+option:hover {
+  background: white;
+  color: black;
+}
+
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
