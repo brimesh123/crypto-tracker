@@ -9,14 +9,15 @@ function App() {
     const [coins, setCoins] = useState([]);
     const [selectedCoin, setSelectedCoin] = useState(null);
     const [search, setSearch] = useState('');
+    const [currency, setCurrency] = useState('usd'); // Add currency state
 
     useEffect(() => {
         const getCoins = async () => {
-            const allCoins = await fetchCoins();
+            const allCoins = await fetchCoins(currency); // Pass currency to API call
             setCoins(allCoins);
         };
         getCoins();
-    }, []);
+    }, [currency]); // Add currency as a dependency
 
     const handleSearchChange = (value) => {
         setSearch(value.toLowerCase());
@@ -27,6 +28,10 @@ function App() {
         setSelectedCoin(coinData);
     };
 
+    const handleCurrencyChange = (event) => {
+        setCurrency(event.target.value);
+    };
+
     const filteredCoins = coins.filter(coin =>
         coin.name.toLowerCase().includes(search) || coin.symbol.toLowerCase().includes(search)
     );
@@ -35,13 +40,17 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>Crypto Currency Tracker</h1>
-               <SearchBar onChange={handleSearchChange} /> 
-
-
+                <SearchBar onChange={handleSearchChange} />
+                <div class="c_filter">
+                    <label>Select Currency: </label>
+                    <select value={currency} onChange={handleCurrencyChange}>
+                        <option value="usd">USD</option>
+                        <option value="inr">INR</option>
+                    </select>
+                </div>
             </header>
-            <center>  {selectedCoin && <CoinDetails coin={selectedCoin} />} </center>
-
-            <CoinList coins={filteredCoins} onCoinClick={handleCoinClick} />
+            <center>{selectedCoin && <CoinDetails coin={selectedCoin} currency={currency} />}</center>
+            <CoinList coins={filteredCoins} onCoinClick={handleCoinClick} currency={currency} />
         </div>
     );
 }
