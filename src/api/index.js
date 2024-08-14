@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const baseURL = 'https://api.coingecko.com/api/v3/';
+const baseURL = 'http://api.coingecko.com/api/v3/';
 
-export const fetchCoins = async () => {
+export const fetchCoins = async (currency) => {
     try {
         const response = await axios.get(`${baseURL}coins/markets`, {
             params: {
-                vs_currency: 'usd',
+                vs_currency: currency,
                 order: 'market_cap_desc',
-                per_page: 150,  
+                per_page: 150,
                 page: 1,
                 sparkline: false
             }
