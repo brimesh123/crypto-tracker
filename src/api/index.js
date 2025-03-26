@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://api.coingecko.com/api/v3/';
+const baseURL = 'https://api.coingecko.com/api/v3/';
 
 export const fetchCoins = async (currency) => {
     try {
